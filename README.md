@@ -3,10 +3,13 @@ This repo contains code of Smart Robotics Project
 
 # Setup
 
-## Clone Project & Create Conda Environment
+## Clone Project
 ```sh
 git clone https://github.com/StePoli-00/Smart-Robotics-Project.git
 cd Smart-Robotics-Project
+```
+ ## Create Conda Environment
+```sh
 conda create --name <env_name>
 conda activate <env_name>
 pip install -r requirements.txt
