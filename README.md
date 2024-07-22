@@ -1,5 +1,5 @@
 # Smart Robotics Project
-This repo contains code of Smart Robotics Project
+This Repository contains the code of Smart Robotics Project
 
 # Setup
 
@@ -17,7 +17,7 @@ conda install python (our version is 3.12)
 ```
 ## Build the project
 > [!NOTE]
-> the environment must be compiled with python3 for the first time with python3 
+> the environment must be compiled with python3 for the correct dependencies installarion
 ```sh
 cd pedestrian_detection
 catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
