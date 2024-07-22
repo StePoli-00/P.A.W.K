@@ -10,6 +10,7 @@ cd Smart-Robotics-Project
 conda create --name <env_name>
 conda activate <env_name>
 pip install -r requirements.txt
+conda install python (our version is 3.12)
 ```
 ## Build the project
 > [!NOTE]
