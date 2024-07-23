@@ -1,0 +1,2 @@
+Il file image.txt contiene l'acquisizione di un frame in formato raw.
+superando il limite dei 100MB di github si trova al seguente link https://drive.google.com/file/d/1SzN8iMLXm2im-y-aBGfJtFokBbwJFrOb/view?usp=drive_link
