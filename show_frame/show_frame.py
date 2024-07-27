@@ -8,7 +8,7 @@ import os
 import uuid
 import cv2
 folder_path="/home/stefano/Desktop/Smart-Robotics-Project/show_frame"
-
+input_file="/home/stefano/Desktop/Smart-Robotics-Project/show_frame/frame.txt"
 class FileFrame():
     def __init__(self,data, header=None):
         width,height,encoding,data,header=self.get_data(data)
@@ -70,7 +70,7 @@ def save_image(image):
 
 
 if __name__=="__main__":
-    frames=load_frame_from_file("/home/stefano/Desktop/Smart-Robotics-Project/show_frame/frame.txt")
+    frames=load_frame_from_file(input_file)
     images=[]
     for frame in frames:
         img=frame.convert_into_images()
