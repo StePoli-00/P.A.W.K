@@ -61,8 +61,8 @@ def load_frame_from_file(file_path):
         
     return frames
 
-def save_image(image):
-    cv2.imwrite(os.path.join(folder_path,str(uuid.uuid4())+".png"),image)
+def save_image(image,out_file):
+    cv2.imwrite(os.path.join(folder_path,out_file),image)
     return
 
 
@@ -72,11 +72,11 @@ def save_image(image):
 if __name__=="__main__":
     frames=load_frame_from_file(input_file)
     images=[]
-    for frame in frames:
+    for i,frame in enumerate(frames):
         img=frame.convert_into_images()
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         cv2.imshow("frame",img)
-        save_image(img)
+        save_image(img,f"frame{i}.png")
         cv2.waitKey(0)
 
     cv2.destroyAllWindows()
