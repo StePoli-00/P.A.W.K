@@ -7,8 +7,13 @@ import pickle
 import os
 import uuid
 import cv2
-folder_path="/home/stefano/Desktop/Smart-Robotics-Project/show_frame"
-input_file="/home/stefano/Desktop/Smart-Robotics-Project/show_frame/frame.txt"
+from pathlib import Path
+
+
+root_path,_=str(Path(__file__).resolve()).split("/Smart-Robotics-Project")
+folder_path=root_path+"/Smart-Robotics-Project/show_frame"
+input_file=root_path+"/Smart-Robotics-Project/show_frame/image.txt"
+output_path=root_path+"/Smart-Robotics-Project/show_frame/frames"
 class FileFrame():
     def __init__(self,data, header=None):
         width,height,encoding,data,header=self.get_data(data)
@@ -62,7 +67,7 @@ def load_frame_from_file(file_path):
     return frames
 
 def save_image(image,out_file):
-    cv2.imwrite(os.path.join(folder_path,out_file),image)
+    cv2.imwrite(os.path.join(output_path,out_file),image)
     return
 
 
