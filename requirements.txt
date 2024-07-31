@@ -25,10 +25,10 @@ joint-state-publisher==1.15.1
 joint-state-publisher-gui==1.15.1
 laser_geometry==1.6.7
 message-filters==1.16.0
-moveit-commander==1.1.13
-moveit-core==1.1.13
-moveit-ros-planning-interface==1.1.13
-moveit-ros-visualization==1.1.13
+#moveit-commander==1.1.13
+#moveit-core==1.1.13
+#moveit-ros-planning-interface==1.1.13
+#moveit-ros-visualization==1.1.13
 python-qt-binding==0.4.4
 qt-dotgraph==0.4.2
 qt-gui==0.4.2
@@ -57,7 +57,7 @@ rosunit==1.15.8
 roswtf==1.16.0
 rqt-console==0.4.12
 rqt-image-view==0.4.17
-rqt-joint-trajectory-controller==0.21.2
+#rqt-joint-trajectory-controller==0.21.2
 rqt-logger-level==0.4.12
 rqt-moveit==0.5.11
 rqt-reconfigure==0.5.5
@@ -88,7 +88,7 @@ rqt_srv==0.4.9
 rqt_top==0.4.10
 rqt_topic==0.4.13
 rqt_web==0.4.10
-rviz==1.14.23
+#rviz==1.14.23
 sensor-msgs==1.13.1
 setuptools==69.5.1
 smach==2.5.2
