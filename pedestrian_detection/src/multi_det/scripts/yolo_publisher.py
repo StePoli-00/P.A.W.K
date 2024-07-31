@@ -8,7 +8,6 @@ from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
 
 
-
 def detect_and_publish():
     rospy.init_node('pose_detection_publisher', anonymous=True)
     pub = rospy.Publisher('pose_detected_image', Image, queue_size=10)
