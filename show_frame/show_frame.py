@@ -8,7 +8,7 @@ import os
 import uuid
 import cv2
 folder_path="/home/stefano/Desktop/Smart-Robotics-Project/show_frame"
-input_file="/home/stefano/Desktop/Smart-Robotics-Project/show_frame/frame.txt"
+input_file="/home/stefano/Desktop/Smart-Robotics-Project/show_frame/image.txt"
 class FileFrame():
     def __init__(self,data, header=None):
         width,height,encoding,data,header=self.get_data(data)

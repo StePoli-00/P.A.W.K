@@ -4,6 +4,7 @@ build/
 bin/
 venv/
 lib/
+*.png
 msg_gen/
 srv_gen/
 msg/*Action.msg
@@ -25,7 +26,7 @@ devel_isolated/
 # Ignore generated docs
 *.dox
 *.wikidoc
-
+**image.txt
 # eclipse stuff
 .project
 .cproject
@@ -47,7 +48,7 @@ qtcreator-*
 
 # Emacs
 .#*
-
+*
 # Catkin custom files
 CATKIN_IGNORE
 kairos-info/image.txt
