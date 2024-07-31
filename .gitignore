@@ -51,4 +51,4 @@ qtcreator-*
 *
 # Catkin custom files
 CATKIN_IGNORE
-kairos-info/image.txt
+**kairos-info/image.txt
