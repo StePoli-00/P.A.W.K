@@ -43,9 +43,7 @@ qtcreator-*
 /planning/cfg
 /planning/docs
 /planning/src
-
 *~
-
 # Emacs
 .#*
 # Catkin custom files
