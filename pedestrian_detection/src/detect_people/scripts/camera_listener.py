@@ -20,7 +20,8 @@ def callback(data):
 def listener():
     rospy.init_node('image_listener', anonymous=True)
 
-    rospy.Subscriber("frame_topic", Image, callback)
+    topic_name="robot/front_rgbd_camera/color/image_raw"
+    rospy.Subscriber(topic_name, Image, callback)
 
     rospy.spin()
 
