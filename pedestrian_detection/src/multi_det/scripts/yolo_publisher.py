@@ -13,9 +13,10 @@ def detect_and_publish():
     pub = rospy.Publisher('pose_detected_image', Image, queue_size=10)
     rate = rospy.Rate(10)  
     bridge = CvBridge()
-
+    rospy.loginfo("Loading model")
     model = torch.hub.load('ultralytics/yolov5', 'yolov5s')
-
+    if model!=None:
+        rospy.loginfo("Model load successfully")
     #image_path = '/home/vboxuser/Desktop/Smart-Robotics-Project/test_scripts/2_people.png'  
     image_path="/home/stefano/Desktop/Smart-Robotics-Project/test_scripts/2_people.png"
     image = cv2.imread(image_path)
@@ -32,6 +33,7 @@ def detect_and_publish():
     mp_pose = mp.solutions.pose
 
     with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:
+        rospy.loginfo("Detecting landmark")
         for index, person in person_detections.iterrows():
             xmin, ymin, xmax, ymax = int(person['xmin']), int(person['ymin']), int(person['xmax']), int(person['ymax'])
             person_roi = image[ymin:ymax, xmin:xmax]
@@ -58,6 +60,7 @@ def detect_and_publish():
 
 if __name__ == '__main__':
     try:
-        detect_and_publish()
+        #while not rospy.is_shutdown():
+            detect_and_publish()
     except rospy.ROSInterruptException:
-        pass
+        rospy.loginfo("Il nodo è stato interrotto")
