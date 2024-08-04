@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(detect_people)
+project(multi_det)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -9,7 +9,6 @@ project(detect_people)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   cv_bridge
-  image_transport
   rospy
   sensor_msgs
   std_msgs
@@ -72,7 +71,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate added messages and services with any dependencies listed here
 # generate_messages(
 #   DEPENDENCIES
-#   std_msgs
+#   sensor_msgs#   std_msgs
 # )
 
 ################################################
@@ -106,8 +105,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES detect_people
-#  CATKIN_DEPENDS cv_bridge image_transport rospy sensor_msg std_msgs
+#  LIBRARIES multi_det
+#  CATKIN_DEPENDS cv_bridge mediapipe opencv-python rospy sensor_msgs std_msgs torch
 #  DEPENDS system_lib
 )
 
@@ -124,7 +123,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/detect_people.cpp
+#   src/${PROJECT_NAME}/multi_det.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -135,7 +134,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/detect_people_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/multi_det_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -161,10 +160,10 @@ include_directories(
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
-file(GLOB SCRIPT_FILES scripts/*.py)
-catkin_install_python(PROGRAMS ${SCRIPT_FILES}
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+# catkin_install_python(PROGRAMS
+#   scripts/my_python_script
+#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+# )
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
@@ -199,7 +198,7 @@ catkin_install_python(PROGRAMS ${SCRIPT_FILES}
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_detect_people.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_multi_det.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
