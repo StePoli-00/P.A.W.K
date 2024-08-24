@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="default">
+    <!-- Altri elementi del mondo -->
+
+    <!-- Include l'actor definito nel file actor.sdf -->
+    <include>
+      <uri>model://actor</uri>
+    </include>
+
+    <!-- Altri elementi del mondo -->
+
+  </world>
+</sdf>
