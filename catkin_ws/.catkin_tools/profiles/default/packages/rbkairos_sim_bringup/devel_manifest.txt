@@ -1,5 +1,0 @@
-rbkairos_sim/rbkairos_sim_bringup
-/home/zampifre/Desktop/catkin_ws/devel/.private/rbkairos_sim_bringup/cmake.lock /home/zampifre/Desktop/catkin_ws/devel/./cmake.lock
-/home/zampifre/Desktop/catkin_ws/devel/.private/rbkairos_sim_bringup/lib/pkgconfig/rbkairos_sim_bringup.pc /home/zampifre/Desktop/catkin_ws/devel/lib/pkgconfig/rbkairos_sim_bringup.pc
-/home/zampifre/Desktop/catkin_ws/devel/.private/rbkairos_sim_bringup/share/rbkairos_sim_bringup/cmake/rbkairos_sim_bringupConfig.cmake /home/zampifre/Desktop/catkin_ws/devel/share/rbkairos_sim_bringup/cmake/rbkairos_sim_bringupConfig.cmake
-/home/zampifre/Desktop/catkin_ws/devel/.private/rbkairos_sim_bringup/share/rbkairos_sim_bringup/cmake/rbkairos_sim_bringupConfig-version.cmake /home/zampifre/Desktop/catkin_ws/devel/share/rbkairos_sim_bringup/cmake/rbkairos_sim_bringupConfig-version.cmake

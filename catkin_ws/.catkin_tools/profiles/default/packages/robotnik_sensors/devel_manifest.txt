@@ -1,5 +1,0 @@
-robotnik_sensors
-/home/zampifre/Desktop/catkin_ws/devel/.private/robotnik_sensors/cmake.lock /home/zampifre/Desktop/catkin_ws/devel/./cmake.lock
-/home/zampifre/Desktop/catkin_ws/devel/.private/robotnik_sensors/lib/pkgconfig/robotnik_sensors.pc /home/zampifre/Desktop/catkin_ws/devel/lib/pkgconfig/robotnik_sensors.pc
-/home/zampifre/Desktop/catkin_ws/devel/.private/robotnik_sensors/share/robotnik_sensors/cmake/robotnik_sensorsConfig-version.cmake /home/zampifre/Desktop/catkin_ws/devel/share/robotnik_sensors/cmake/robotnik_sensorsConfig-version.cmake
-/home/zampifre/Desktop/catkin_ws/devel/.private/robotnik_sensors/share/robotnik_sensors/cmake/robotnik_sensorsConfig.cmake /home/zampifre/Desktop/catkin_ws/devel/share/robotnik_sensors/cmake/robotnik_sensorsConfig.cmake
