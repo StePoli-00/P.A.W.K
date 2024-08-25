@@ -5,6 +5,7 @@ bin/
 venv/
 lib/
 *.png
+*.pt
 msg_gen/
 srv_gen/
 msg/*Action.msg

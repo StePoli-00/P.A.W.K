@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import sys
 import rospy
 import cv2
@@ -18,7 +18,7 @@ def detect_and_publish():
     if model!=None:
         rospy.loginfo("Model load successfully")
     #image_path = '/home/vboxuser/Desktop/Smart-Robotics-Project/test_scripts/2_people.png'  
-    image_path="/home/stefano/Desktop/Smart-Robotics-Project/test_scripts/2_people.png"
+    image_path="/home/zampifre/Desktop/progetto/Smart-Robotics-Project/test_scripts/2_people.png"
     image = cv2.imread(image_path)
 
     if image is None:
@@ -60,7 +60,7 @@ def detect_and_publish():
 
 if __name__ == '__main__':
     try:
-        #while not rospy.is_shutdown():
+        while not rospy.is_shutdown():
             detect_and_publish()
     except rospy.ROSInterruptException:
         rospy.loginfo("Il nodo è stato interrotto")
