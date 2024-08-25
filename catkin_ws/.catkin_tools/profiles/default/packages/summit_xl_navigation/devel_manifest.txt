@@ -1,0 +1,5 @@
+summit_xl_common/summit_xl_navigation
+/home/zampifre/Desktop/catkin_ws/devel/.private/summit_xl_navigation/cmake.lock /home/zampifre/Desktop/catkin_ws/devel/./cmake.lock
+/home/zampifre/Desktop/catkin_ws/devel/.private/summit_xl_navigation/lib/pkgconfig/summit_xl_navigation.pc /home/zampifre/Desktop/catkin_ws/devel/lib/pkgconfig/summit_xl_navigation.pc
+/home/zampifre/Desktop/catkin_ws/devel/.private/summit_xl_navigation/share/summit_xl_navigation/cmake/summit_xl_navigationConfig.cmake /home/zampifre/Desktop/catkin_ws/devel/share/summit_xl_navigation/cmake/summit_xl_navigationConfig.cmake
+/home/zampifre/Desktop/catkin_ws/devel/.private/summit_xl_navigation/share/summit_xl_navigation/cmake/summit_xl_navigationConfig-version.cmake /home/zampifre/Desktop/catkin_ws/devel/share/summit_xl_navigation/cmake/summit_xl_navigationConfig-version.cmake

@@ -18,7 +18,7 @@ def detect_and_publish():
     if model!=None:
         rospy.loginfo("Model load successfully")
     #image_path = '/home/vboxuser/Desktop/Smart-Robotics-Project/test_scripts/2_people.png'  
-    image_path="/home/zampifre/Desktop/progetto/Smart-Robotics-Project/test_scripts/2_people.png"
+    image_path="/home/zampifre/Desktop/progetto/Smart-Robotics-Project/our_photos/people/actors.png"
     image = cv2.imread(image_path)
 
     if image is None:

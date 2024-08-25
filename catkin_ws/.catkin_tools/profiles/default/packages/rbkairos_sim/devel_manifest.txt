@@ -1,0 +1,2 @@
+rbkairos_sim/rbkairos_sim
+/home/zampifre/Desktop/catkin_ws/devel/.private/rbkairos_sim/cmake.lock /home/zampifre/Desktop/catkin_ws/devel/./cmake.lock
