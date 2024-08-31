@@ -23,7 +23,7 @@ cd pedestrian_detection
 catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 ```
 
-## Add catkin_ws into repo
+
 
 
 

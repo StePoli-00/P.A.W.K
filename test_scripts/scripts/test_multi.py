@@ -5,7 +5,7 @@ import mediapipe as mp
 
 model = torch.hub.load('ultralytics/yolov5', 'yolov5s')
 
-image_path = '/home/stefano/Desktop/Smart-Robotics-Project/test_scripts/2_people.png' 
+image_path = '/home/vboxuser/Desktop/Smart-Robotics-Project/test_scripts/2_people.png' 
 image = cv2.imread(image_path)
 
 if image is None:
