@@ -1,5 +1,0 @@
-universal_robot/ur5e_moveit_config
-/home/zampifre/Desktop/catkin_ws/devel/.private/ur5e_moveit_config/cmake.lock /home/zampifre/Desktop/catkin_ws/devel/./cmake.lock
-/home/zampifre/Desktop/catkin_ws/devel/.private/ur5e_moveit_config/lib/pkgconfig/ur5e_moveit_config.pc /home/zampifre/Desktop/catkin_ws/devel/lib/pkgconfig/ur5e_moveit_config.pc
-/home/zampifre/Desktop/catkin_ws/devel/.private/ur5e_moveit_config/share/ur5e_moveit_config/cmake/ur5e_moveit_configConfig-version.cmake /home/zampifre/Desktop/catkin_ws/devel/share/ur5e_moveit_config/cmake/ur5e_moveit_configConfig-version.cmake
-/home/zampifre/Desktop/catkin_ws/devel/.private/ur5e_moveit_config/share/ur5e_moveit_config/cmake/ur5e_moveit_configConfig.cmake /home/zampifre/Desktop/catkin_ws/devel/share/ur5e_moveit_config/cmake/ur5e_moveit_configConfig.cmake
