@@ -1,0 +1,7 @@
+obstacle_detection
+/home/zampifre/Desktop/catkin_ws/devel/.private/obstacle_detection/cmake.lock /home/zampifre/Desktop/catkin_ws/devel/./cmake.lock
+/home/zampifre/Desktop/catkin_ws/devel/.private/obstacle_detection/lib/pkgconfig/obstacle_detection.pc /home/zampifre/Desktop/catkin_ws/devel/lib/pkgconfig/obstacle_detection.pc
+/home/zampifre/Desktop/catkin_ws/devel/.private/obstacle_detection/lib/obstacle_detection/obstacle_detector.py /home/zampifre/Desktop/catkin_ws/devel/lib/obstacle_detection/obstacle_detector.py
+/home/zampifre/Desktop/catkin_ws/devel/.private/obstacle_detection/lib/obstacle_detection/cmake.lock /home/zampifre/Desktop/catkin_ws/devel/lib/obstacle_detection/cmake.lock
+/home/zampifre/Desktop/catkin_ws/devel/.private/obstacle_detection/share/obstacle_detection/cmake/obstacle_detectionConfig-version.cmake /home/zampifre/Desktop/catkin_ws/devel/share/obstacle_detection/cmake/obstacle_detectionConfig-version.cmake
+/home/zampifre/Desktop/catkin_ws/devel/.private/obstacle_detection/share/obstacle_detection/cmake/obstacle_detectionConfig.cmake /home/zampifre/Desktop/catkin_ws/devel/share/obstacle_detection/cmake/obstacle_detectionConfig.cmake
