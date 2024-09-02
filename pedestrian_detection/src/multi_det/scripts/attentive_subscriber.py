@@ -9,7 +9,8 @@ import mediapipe as mp
 class PoseSubscriber:
     def __init__(self):
         rospy.init_node('attentive_subscriber', anonymous=True)
-        self.subscriber = rospy.Subscriber('attention_image', Image, self.callback)
+        rospy.loginfo("node started")
+        self.subscriber = rospy.Subscriber('/robot/front_rgbd_camera/rgb/image_raw', Image, self.callback)
         self.bridge = CvBridge()
         self.mp_holistic = mp.solutions.holistic
         self.holistic = self.mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5)

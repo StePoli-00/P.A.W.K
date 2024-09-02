@@ -1,8 +1,0 @@
-robot_goal_mover
-/home/zampifre/Desktop/catkin_ws/devel/.private/robot_goal_mover/cmake.lock /home/zampifre/Desktop/catkin_ws/devel/./cmake.lock
-/home/zampifre/Desktop/catkin_ws/devel/.private/robot_goal_mover/lib/robot_goal_mover/move_to_send_coord.py /home/zampifre/Desktop/catkin_ws/devel/lib/robot_goal_mover/move_to_send_coord.py
-/home/zampifre/Desktop/catkin_ws/devel/.private/robot_goal_mover/lib/robot_goal_mover/move_to_clicked_point.py /home/zampifre/Desktop/catkin_ws/devel/lib/robot_goal_mover/move_to_clicked_point.py
-/home/zampifre/Desktop/catkin_ws/devel/.private/robot_goal_mover/lib/robot_goal_mover/cmake.lock /home/zampifre/Desktop/catkin_ws/devel/lib/robot_goal_mover/cmake.lock
-/home/zampifre/Desktop/catkin_ws/devel/.private/robot_goal_mover/lib/pkgconfig/robot_goal_mover.pc /home/zampifre/Desktop/catkin_ws/devel/lib/pkgconfig/robot_goal_mover.pc
-/home/zampifre/Desktop/catkin_ws/devel/.private/robot_goal_mover/share/robot_goal_mover/cmake/robot_goal_moverConfig.cmake /home/zampifre/Desktop/catkin_ws/devel/share/robot_goal_mover/cmake/robot_goal_moverConfig.cmake
-/home/zampifre/Desktop/catkin_ws/devel/.private/robot_goal_mover/share/robot_goal_mover/cmake/robot_goal_moverConfig-version.cmake /home/zampifre/Desktop/catkin_ws/devel/share/robot_goal_mover/cmake/robot_goal_moverConfig-version.cmake
