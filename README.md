@@ -17,17 +17,18 @@ conda install python (our version is 3.12)
 ```
 ## Build the project
 > [!NOTE]
-> the environment must be compiled with python3 for the correct dependencies installarion
+> BUILD ALWAYS with catkin_make specify python3
 ```sh
-cd pedestrian_detection
 catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
+cd pedestrian_detection
+
 ```
 
 
 ### catkin_ws
 ```sh
 cd catkin_ws
-catkin build
+catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 source devel/setup.bash
 ```
 ## Run collision detection algorithm

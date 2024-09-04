@@ -1,10 +1,11 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 import rospy
 from geometry_msgs.msg import Twist, Point, PointStamped
 from nav_msgs.msg import Odometry
 import math
 import numpy as np
+
 from scipy.optimize import minimize
 from tf.transformations import euler_from_quaternion
 
@@ -147,15 +148,16 @@ class MoveAndAvoid:
 
             if avoiding:
                 # Ottimizza sia la velocità lineare che angolare durante l'evitamento
-                bounds = [(0.2, 0.8), (-1.0, 1.0)]  # Velocità lineare tra 0.2 e 0.8, velocità angolare tra -1 e 1
+                #bounds = [(0.2, 0.8), (-1.0, 1.0)]  # Velocità lineare tra 0.2 e 0.8, velocità angolare tra -1 e 1
+                bounds = [(-0.8, -0.2), (-0.10, -1.0)]  
             else:
                 # Ottimizza solo la velocità lineare quando non ci sono ostacoli
                 def cost_function_linear_only(u):
                     return self.calculate_cost_function([u[0], 0.0])
                 
-                bounds = [(0.1, 0.5), (0.0, 0.0)]  # Solo velocità lineare
-
-            initial_guess = np.array([0.2, 0.0])  # Velocità lineare e angolare iniziali più basse
+                #bounds = [(0.1, 0.5), (0.0, 0.0)]  # Solo velocità lineare
+                bounds = [(-0.5, -0.1), (0.0,0.0)]
+            initial_guess = np.array([-0.2, 0.0])  # Velocità lineare e angolare iniziali più basse
             result = minimize(cost_function, initial_guess, bounds=bounds)
             
             if result.success:
