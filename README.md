@@ -24,6 +24,28 @@ catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 ```
 
 
+### catkin_ws
+```sh
+cd catkin_ws
+catkin build
+source devel/setup.bash
+```
+## Run collision detection algorithm
+
+1. launch the simulation
+```sh
+roslaunch rbkairos_sim_bringup rbkairos_complete.launch
+```
+2. run rosnode to detect static and dynamic obstacles
+ ```sh
+rosrun obstacle_detection new_version.py
+```
+3. run control algorithm 
+```sh
+rosrun mpc_algorithm algorithm_<version>.py
+```
+
+
 
 
 
