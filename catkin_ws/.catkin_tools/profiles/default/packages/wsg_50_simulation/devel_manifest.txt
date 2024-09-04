@@ -1,0 +1,7 @@
+wsg50-ros-pkg/wsg_50_simulation
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/wsg_50_simulation/cmake.lock /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/./cmake.lock
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/wsg_50_simulation/share/wsg_50_simulation/cmake/wsg_50_simulationConfig.cmake /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/share/wsg_50_simulation/cmake/wsg_50_simulationConfig.cmake
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/wsg_50_simulation/share/wsg_50_simulation/cmake/wsg_50_simulationConfig-version.cmake /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/share/wsg_50_simulation/cmake/wsg_50_simulationConfig-version.cmake
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/wsg_50_simulation/lib/pkgconfig/wsg_50_simulation.pc /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/pkgconfig/wsg_50_simulation.pc
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/wsg_50_simulation/lib/wsg_50_simulation/wsg_50_sim_keyboard_teleop /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/wsg_50_simulation/wsg_50_sim_keyboard_teleop
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/wsg_50_simulation/lib/wsg_50_simulation/wsg_50_sim_driver /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/wsg_50_simulation/wsg_50_sim_driver

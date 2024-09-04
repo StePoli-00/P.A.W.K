@@ -1,0 +1,6 @@
+actor_collisions
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/actor_collisions/cmake.lock /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/./cmake.lock
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/actor_collisions/share/actor_collisions/cmake/actor_collisionsConfig-version.cmake /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/share/actor_collisions/cmake/actor_collisionsConfig-version.cmake
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/actor_collisions/share/actor_collisions/cmake/actor_collisionsConfig.cmake /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/share/actor_collisions/cmake/actor_collisionsConfig.cmake
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/actor_collisions/lib/libActorCollisionsPlugin.so /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/libActorCollisionsPlugin.so
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/actor_collisions/lib/pkgconfig/actor_collisions.pc /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/pkgconfig/actor_collisions.pc

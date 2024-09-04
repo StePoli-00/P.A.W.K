@@ -1,0 +1,5 @@
+rbkairos_common/rbkairos_description
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/rbkairos_description/cmake.lock /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/./cmake.lock
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/rbkairos_description/share/rbkairos_description/cmake/rbkairos_descriptionConfig-version.cmake /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/share/rbkairos_description/cmake/rbkairos_descriptionConfig-version.cmake
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/rbkairos_description/share/rbkairos_description/cmake/rbkairos_descriptionConfig.cmake /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/share/rbkairos_description/cmake/rbkairos_descriptionConfig.cmake
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/rbkairos_description/lib/pkgconfig/rbkairos_description.pc /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/pkgconfig/rbkairos_description.pc

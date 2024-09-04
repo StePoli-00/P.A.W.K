@@ -1,0 +1,5 @@
+summit_xl_common/summit_xl_localization
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/summit_xl_localization/cmake.lock /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/./cmake.lock
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/summit_xl_localization/share/summit_xl_localization/cmake/summit_xl_localizationConfig.cmake /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/share/summit_xl_localization/cmake/summit_xl_localizationConfig.cmake
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/summit_xl_localization/share/summit_xl_localization/cmake/summit_xl_localizationConfig-version.cmake /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/share/summit_xl_localization/cmake/summit_xl_localizationConfig-version.cmake
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/summit_xl_localization/lib/pkgconfig/summit_xl_localization.pc /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/pkgconfig/summit_xl_localization.pc

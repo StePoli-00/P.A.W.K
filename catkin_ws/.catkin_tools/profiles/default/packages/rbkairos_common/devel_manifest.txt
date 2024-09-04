@@ -1,0 +1,2 @@
+rbkairos_common/rbkairos_common
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/rbkairos_common/cmake.lock /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/./cmake.lock

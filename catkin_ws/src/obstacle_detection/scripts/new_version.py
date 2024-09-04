@@ -11,18 +11,18 @@ class ObstacleDistanceCalculator:
         rospy.init_node('obstacle_distance_calculator')
 
         # Publisher per la distanza dal più vicino ostacolo statico
-        self.static_obstacle_pub = rospy.Publisher('/static_obstacle_distance', PointStamped, queue_size=10)
-        
-        # Publisher per la distanza dal più vicino ostacolo dinamico (per esempio)
         self.dynamic_obstacle_pub = rospy.Publisher('/dynamic_obstacle_distance', PointStamped, queue_size=10)
         
-        # Subscriber per il LIDAR (ostacoli statici)
+        # Publisher per la distanza dal più vicino ostacolo dinamico (per esempio)
+        self.static_obstacle_pub = rospy.Publisher('/static_obstacle_distance', PointStamped, queue_size=10)
+        
+        # Subscriber per il LIDAR (ostacoli dinamici)
         rospy.Subscriber('/robot/front_laser/scan', LaserScan, self.lidar_callback)
         
-        # Placeholder per gli ostacoli dinamici
+        # Placeholder per gli ostacoli statici
         rospy.Subscriber('/robot/rear_laser/scan', LaserScan, self.dynamic_lidar_callback)
         
-        self.rate = rospy.Rate(10)
+        self.rate = rospy.Rate(20)
     
     def lidar_callback(self, msg):
         # Estrai i dati del LIDAR
@@ -37,13 +37,13 @@ class ObstacleDistanceCalculator:
             min_distance = float('inf')
         
         # Pubblica la distanza minima trovata dagli ostacoli statici
-        static_obstacle_msg = PointStamped()
-        static_obstacle_msg.header = Header(stamp=rospy.Time.now(), frame_id=msg.header.frame_id)
-        static_obstacle_msg.point.x = min_distance
-        static_obstacle_msg.point.y = 0.0
-        static_obstacle_msg.point.z = 0.0
+        dynamic_obstacle_msg = PointStamped()
+        dynamic_obstacle_msg.header = Header(stamp=rospy.Time.now(), frame_id=msg.header.frame_id)
+        dynamic_obstacle_msg.point.x = min_distance
+        dynamic_obstacle_msg.point.y = 0.0
+        dynamic_obstacle_msg.point.z = 0.0
         
-        self.static_obstacle_pub.publish(static_obstacle_msg)
+        self.dynamic_obstacle_pub.publish(dynamic_obstacle_msg)
         rospy.loginfo(f"Distanza dal più vicino ostacolo dinamico: {min_distance} m")
     
     def dynamic_lidar_callback(self, msg):
@@ -59,13 +59,13 @@ class ObstacleDistanceCalculator:
             min_distance = float('inf')
         
         # Pubblica la distanza minima trovata dagli ostacoli dinamici
-        dynamic_obstacle_msg = PointStamped()
-        dynamic_obstacle_msg.header = Header(stamp=rospy.Time.now(), frame_id=msg.header.frame_id)
-        dynamic_obstacle_msg.point.x = min_distance
-        dynamic_obstacle_msg.point.y = 0.0
-        dynamic_obstacle_msg.point.z = 0.0
+        static_obstacle_msg = PointStamped()
+        static_obstacle_msg.header = Header(stamp=rospy.Time.now(), frame_id=msg.header.frame_id)
+        static_obstacle_msg.point.x = min_distance
+        static_obstacle_msg.point.y = 0.0
+        static_obstacle_msg.point.z = 0.0
         
-        self.dynamic_obstacle_pub.publish(dynamic_obstacle_msg)
+        self.static_obstacle_pub.publish(static_obstacle_msg)
         rospy.loginfo(f"Distanza dal più vicino ostacolo statico: {min_distance} m")
     
     def run(self):

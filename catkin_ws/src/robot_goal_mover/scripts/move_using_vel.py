@@ -16,7 +16,7 @@ class MoveAndStop:
         self.odom_sub = rospy.Subscriber('/robot/robotnik_base_control/odom', Odometry, self.odom_callback)
 
         # Imposta la distanza desiderata (in metri)
-        self.target_distance = 6.0  # esempio: 5 metri
+        self.target_distance = 15.0  # esempio: 5 metri
 
         # Variabili per la gestione della distanza
         self.start_position = None

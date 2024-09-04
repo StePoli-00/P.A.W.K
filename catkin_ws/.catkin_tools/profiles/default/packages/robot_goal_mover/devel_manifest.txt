@@ -1,0 +1,11 @@
+robot_goal_mover
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/robot_goal_mover/cmake.lock /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/./cmake.lock
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/robot_goal_mover/share/robot_goal_mover/cmake/robot_goal_moverConfig.cmake /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/share/robot_goal_mover/cmake/robot_goal_moverConfig.cmake
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/robot_goal_mover/share/robot_goal_mover/cmake/robot_goal_moverConfig-version.cmake /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/share/robot_goal_mover/cmake/robot_goal_moverConfig-version.cmake
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/robot_goal_mover/lib/pkgconfig/robot_goal_mover.pc /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/pkgconfig/robot_goal_mover.pc
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/robot_goal_mover/lib/robot_goal_mover/move_using_vel.py /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/robot_goal_mover/move_using_vel.py
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/robot_goal_mover/lib/robot_goal_mover/cmake.lock /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/robot_goal_mover/cmake.lock
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/robot_goal_mover/lib/robot_goal_mover/move_to_clicked_point.py /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/robot_goal_mover/move_to_clicked_point.py
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/robot_goal_mover/lib/robot_goal_mover/move_to_send_new.py /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/robot_goal_mover/move_to_send_new.py
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/robot_goal_mover/lib/robot_goal_mover/move_to_send_coord.py /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/robot_goal_mover/move_to_send_coord.py
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/robot_goal_mover/lib/robot_goal_mover/moving_using_vel_v2.py /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/robot_goal_mover/moving_using_vel_v2.py

@@ -1,0 +1,1 @@
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/./cmake.lock 96

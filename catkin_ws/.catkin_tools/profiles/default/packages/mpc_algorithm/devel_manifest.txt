@@ -1,0 +1,10 @@
+mpc_algorithm
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/mpc_algorithm/cmake.lock /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/./cmake.lock
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/mpc_algorithm/share/mpc_algorithm/cmake/mpc_algorithmConfig.cmake /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/share/mpc_algorithm/cmake/mpc_algorithmConfig.cmake
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/mpc_algorithm/share/mpc_algorithm/cmake/mpc_algorithmConfig-version.cmake /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/share/mpc_algorithm/cmake/mpc_algorithmConfig-version.cmake
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/mpc_algorithm/lib/pkgconfig/mpc_algorithm.pc /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/pkgconfig/mpc_algorithm.pc
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/mpc_algorithm/lib/mpc_algorithm/algorithm_v2_1.py /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/mpc_algorithm/algorithm_v2_1.py
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/mpc_algorithm/lib/mpc_algorithm/cmake.lock /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/mpc_algorithm/cmake.lock
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/mpc_algorithm/lib/mpc_algorithm/algorithm_v3.py /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/mpc_algorithm/algorithm_v3.py
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/mpc_algorithm/lib/mpc_algorithm/algorithm_v2.py /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/mpc_algorithm/algorithm_v2.py
+/home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/.private/mpc_algorithm/lib/mpc_algorithm/algorithm.py /home/stefano/Desktop/Smart-Robotics-Project/catkin_ws/devel/lib/mpc_algorithm/algorithm.py
