@@ -4,6 +4,7 @@ build/
 bin/
 venv/
 lib/
+.catkin_tools/*
 *.png
 *.pt
 msg_gen/
