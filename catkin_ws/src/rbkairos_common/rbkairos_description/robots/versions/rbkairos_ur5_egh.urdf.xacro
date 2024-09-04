@@ -63,7 +63,7 @@
 
     <!-- Intel Realsense -->
     <xacro:sensor_r430 prefix="$(arg prefix)wrist_rgbd" parent="$(arg prefix)arm_tool0" prefix_topic="wrist_rgbd">
-      <origin xyz="-0.075 0.0 0.065" rpy="0 ${-pi/2} 0"/>
+      <origin xyz="1 0.0 0.065" rpy="1.1855 -1.5708 0"/>
     </xacro:sensor_r430>
 
     <!-- Gazebo ros control pluggins -->
