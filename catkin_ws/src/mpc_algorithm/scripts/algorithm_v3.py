@@ -28,7 +28,7 @@ class MoveAndAvoid:
         rospy.loginfo("Subscribed to /dynamic_obstacle_distance")
 
         # Imposta la coordinata di destinazione (in metri)
-        self.target_position = (6.0, 0.0)  
+        self.target_position = (-6, 0.0)  
 
         # Variabili per la gestione della distanza e posizione
         self.current_position = None
