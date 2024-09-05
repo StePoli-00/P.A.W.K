@@ -41,7 +41,7 @@ srv/_*.py
 *.pyc
 qtcreator-*
 *.user
-
+/rbkairos_sim
 /planning/cfg
 /planning/docs
 /planning/src
