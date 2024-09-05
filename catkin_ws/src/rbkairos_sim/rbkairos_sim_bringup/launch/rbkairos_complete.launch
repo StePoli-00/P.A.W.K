@@ -30,7 +30,7 @@
     <arg name="amcl_and_mapserver_a" default="true"/>
     <arg name="launch_pad_a" default="true"/>
     <!-- spawn position robot a -->
-    <arg name="x_init_pose_robot_a" default="0" />
+    <arg name="x_init_pose_robot_a" default="6" />
     <arg name="y_init_pose_robot_a" default="0" />
     <arg name="z_init_pose_robot_a" default="0" />
     <arg name="yaw_init_pose_robot_a" default="0" />

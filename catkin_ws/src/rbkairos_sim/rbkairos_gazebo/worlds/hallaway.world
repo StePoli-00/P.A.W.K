@@ -279,11 +279,11 @@
       <trajectory id="0" type="walking">
       <waypoint>
         <time>0</time>
-        <pose>-10 0 0 0 0 0</pose>
+        <pose>-7 0 0 0 0 0</pose>
       </waypoint>
         <waypoint>
         	<time>20</time> <!-- Tempo in secondi per raggiungere il goal -->
-        	<pose>1.0 2.0 0 0 0 0</pose> <!-- Pose del goal: x, y, z, roll, pitch, yaw -->
+        	<pose>1.0 0 0 0 0 0</pose> <!-- Pose del goal: x, y, z, roll, pitch, yaw -->
       	</waypoint>
       </trajectory>
     </script>
