@@ -1,0 +1,14 @@
+{
+"omega_goal" : 1.0,
+"omega_obstacle": 0.5,
+"angle_min" :-2.3561999797821045,  
+"angle_max":2.3561999797821045,  
+"angle_increment" :0.008726666681468487,
+"thr_static_obs": 1.5,
+"lb_lin_vel":-1,
+"up_lin_vel":0.5,
+"lb_ang_vel":-1,
+"up_ang_vel":1,
+"goal_pose_x":-2.0 ,
+"goal_pose_y":0.0
+}
