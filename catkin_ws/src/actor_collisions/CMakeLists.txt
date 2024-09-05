@@ -8,12 +8,12 @@ find_package(catkin REQUIRED COMPONENTS roscpp gazebo_ros)
 find_package(gazebo REQUIRED)
 
 # Dichiarare i pacchetti Catkin
-catkin_package(
-  INCLUDE_DIRS include
-  LIBRARIES ActorCollisionsPlugin
-  CATKIN_DEPENDS roscpp gazebo_ros
-  DEPENDS gazebo
-)
+#catkin_package(
+#  INCLUDE_DIRS include
+#  LIBRARIES ActorCollisionsPlugin
+#  CATKIN_DEPENDS roscpp gazebo_ros
+#  DEPENDS gazebo
+#)
 
 # Includere le directory di include
 include_directories(
