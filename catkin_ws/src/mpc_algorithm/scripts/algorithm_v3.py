@@ -4,6 +4,7 @@ import rospy
 import numpy as np
 from geometry_msgs.msg import Twist, PoseStamped, PoseWithCovarianceStamped
 from sensor_msgs.msg import LaserScan
+from copy import deepcopy
 
 # Global variables to store sensor data
 current_pose = None
@@ -35,7 +36,7 @@ def calculate_cost(current_pose, goal_pose, obstacles_static):
     phi_obs_static = 0
     for obs in obstacles_static:
         distance_to_static_obs = np.linalg.norm(np.array([current_pose.position.x, current_pose.position.y]) - obs)
-        if distance_to_static_obs < 1.0:  # Threshold for considering an obstacle close
+        if distance_to_static_obs < 1.5:  # Threshold for considering an obstacle close
             phi_obs_static += 1 / (distance_to_static_obs ** 2)
 
     # Total cost function J(x,u)
@@ -81,10 +82,10 @@ def mpc_control_loop(goal_pose):
                 simulated_twist.angular.z = angular_vel
 
                 # Simulate next state (ignoring dynamics for simplicity)
-                #simulated_pose = current_pose  # Assume current_pose gets updated with actual pose
+                simulated_pose = deepcopy(current_pose)  # Assume current_pose gets updated with actual pose
                 
-                simulated_pose.position.x += simulated_twist.linear.x * np.cos(current_pose.orientation.z) * delta_t
-                simulated_pose.position.y += simulated_twist.linear.x * np.sin(current_pose.orientation.z) * delta_t
+                simulated_pose.position.x += simulated_twist.linear.x * np.cos(current_pose.orientation.z) * (.1)
+                simulated_pose.position.y += simulated_twist.linear.x * np.sin(current_pose.orientation.z) * (.1)
 
                 # Calculate cost for this control input
                 cost = calculate_cost(simulated_pose, goal_pose, static_obstacles)
@@ -106,7 +107,7 @@ if __name__ == "__main__":
 
     # Subscribers for sensor data
     rospy.Subscriber('/robot/amcl_pose', PoseWithCovarianceStamped, amcl_pose_callback)
-    rospy.Subscriber('/robot/front_laser/scan', LaserScan, laser_scan_callback)
+    rospy.Subscriber('/robot/rear_laser/scan', LaserScan, laser_scan_callback)
 
     # Define a goal position for the robot to navigate towards
     goal_pose = PoseStamped()
