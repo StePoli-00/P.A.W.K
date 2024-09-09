@@ -46,11 +46,33 @@ def calculate_cost(current_pose, goal_pose, obstacles_static):
 
     # Calcolare omega_obstacle in base alla distanza minima all'ostacolo
     global omega_obstacle
-    omega_obstacle = max(0.1, 1 / (min_distance_to_obstacle + 0.2))  # Aumenta omega_obstacle man mano che la distanza diminuisce
+    omega_obstacle = max(0.1, 1 / (min_distance_to_obstacle + 0.1))  # Aumenta omega_obstacle man mano che la distanza diminuisce
 
     # J(x,u)
     cost = omega_goal * phi_goal + omega_obstacle * phi_obs_static
     return cost
+
+def calculate_target_angle(current_pose, goal_pose):
+    goal_x = goal_pose.pose.position.x
+    goal_y = goal_pose.pose.position.y
+
+    current_x = current_pose.position.x
+    current_y = current_pose.position.y
+
+    dx = goal_x - current_x
+    dy = goal_y - current_y
+
+    target_angle = np.arctan2(dy, dx)
+
+    current_orientation = current_pose.orientation
+    _, _, current_theta = euler_from_quaternion([
+        current_orientation.x, 
+        current_orientation.y, 
+        current_orientation.z, 
+        current_orientation.w
+    ])
+
+    return target_angle - current_theta
 
 def get_obstacle_positions(front_scan, rear_scan):
     obstacles = []
@@ -60,7 +82,7 @@ def get_obstacle_positions(front_scan, rear_scan):
     # Scan Anteriore (retro del robot nel nostro caso)
     for i in range(num_readings_front):
         r = front_scan[i]
-        if r < 1.5:  
+        if r < 1:  
             angle = angle_min + i * angle_increment
             x = r * np.cos(angle)
             y = r * np.sin(angle)
@@ -69,7 +91,7 @@ def get_obstacle_positions(front_scan, rear_scan):
     # Scan Posteriore (frontale del robot)
     for i in range(num_readings_rear):
         r = rear_scan[i]
-        if r < 1.5:  
+        if r < 1:  
             angle = angle_min + i * angle_increment
             x = r * np.cos(angle)
             y = r * np.sin(angle)
@@ -88,12 +110,24 @@ def mpc_control_loop(goal_pose):
             continue
 
         static_obstacles = get_obstacle_positions(front_laser_scan, rear_laser_scan)
+        min_distance_to_obstacle = min([np.linalg.norm(np.array([current_pose.position.x, current_pose.position.y]) - np.array(obs)) for obs in static_obstacles] + [float('inf')])
+
+        # Calcolare la distanza al target
+        distance_to_goal = np.linalg.norm(np.array([current_pose.position.x, current_pose.position.y]) -
+                                          np.array([goal_pose.pose.position.x, goal_pose.pose.position.y]))
+
+        # Controllo per fermare il robot se vicino al target
+        if distance_to_goal < 0.5:
+            rospy.loginfo("Goal reached! Stopping the robot.")
+            cmd_vel_pub.publish(Twist())  
+            rospy.signal_shutdown("Reached the goal") 
+            return
 
         best_cost = float('inf')
         best_twist = Twist()
 
         for linear_vel in np.linspace(-1, 0.5, 5):  
-            for angular_vel in np.linspace(-0.7, 0.7, 10): 
+            for angular_vel in np.linspace(-1, 1, 10): 
                 
                 simulated_pose = deepcopy(current_pose)
 
@@ -116,12 +150,15 @@ def mpc_control_loop(goal_pose):
                 if cost < best_cost:
                     best_cost = cost
                     best_twist.linear.x = linear_vel
-                    best_twist.angular.z = angular_vel * omega_obstacle  # Regola la velocità angolare in base a omega_obstacle
+                    best_twist.angular.z = angular_vel * omega_obstacle
+
+        # Verifica se ci sono ostacoli vicini e orienta il robot verso il target se non ce ne sono
+        if min_distance_to_obstacle > 1.2: 
+            target_angle_diff = calculate_target_angle(current_pose, goal_pose)
+            best_twist.angular.z = np.clip(target_angle_diff, -1, 1)  
 
         cmd_vel_pub.publish(best_twist)
 
-        distance_to_goal = np.linalg.norm(np.array([current_pose.position.x, current_pose.position.y]) -
-                                          np.array([goal_pose.pose.position.x, goal_pose.pose.position.y]))
         rospy.loginfo(f"Distance to goal: {distance_to_goal:.2f}")
         rospy.loginfo(f"Best command: Linear velocity: {best_twist.linear.x}, Angular velocity: {best_twist.angular.z}")
         
@@ -137,7 +174,7 @@ if __name__ == "__main__":
     rospy.Subscriber('/robot/rear_laser/scan', LaserScan, rear_laser_scan_callback)
 
     goal_pose = PoseStamped()
-    goal_pose.pose.position.x = -2.0  
+    goal_pose.pose.position.x = -3.0  
     goal_pose.pose.position.y = 0.0
 
     mpc_control_loop(goal_pose)
