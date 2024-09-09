@@ -63,7 +63,7 @@
     <model name='hallway'>
       <pose>0 0 0 0 0 0</pose>
       <link name='Wall_2'>
-        <pose>0 2.5 0 0 0 0</pose> <!-- Spostata a y=2.5 per aumentare la distanza -->
+        <pose>0 3.5 0 0 0 0</pose> <!-- Spostata a y=2.5 per aumentare la distanza -->
         <visual name='Wall_2_Visual_0'>
           <pose>-8.0 0 1.25 0 0 0</pose> <!-- Spostata per la nuova lunghezza -->
           <geometry>
@@ -110,7 +110,7 @@
         </collision>
       </link>
       <link name='Wall_7'>
-        <pose>0 -2.5 0 0 0 0</pose> <!-- Spostata a y=-2.5 per aumentare la distanza -->
+        <pose>0 -3.5 0 0 0 0</pose> <!-- Spostata a y=-2.5 per aumentare la distanza -->
         <visual name='Wall_7_Visual_0'>
           <pose>-8.0 0 1.25 0 0 0</pose> <!-- Spostata per la nuova lunghezza -->
           <geometry>

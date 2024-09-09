@@ -4,115 +4,140 @@ import rospy
 import numpy as np
 from geometry_msgs.msg import Twist, PoseStamped, PoseWithCovarianceStamped
 from sensor_msgs.msg import LaserScan
+from tf.transformations import euler_from_quaternion, quaternion_from_euler
 from copy import deepcopy
 
-# Global variables to store sensor data
 current_pose = None
 front_laser_scan = None
+rear_laser_scan = None
 
-# Parameters for MPC
-omega_goal = 0.6
-omega_3 = 0.7
+omega_goal = 1.0
+omega_obstacle = 0.8
+
+angle_min = -2.3561999797821045  
+angle_max = 2.3561999797821045   
+angle_increment = 0.008726666681468487  
 
 def amcl_pose_callback(msg):
     global current_pose
-    current_pose = msg.pose.pose  # Estrarre la posizione dal messaggio con covarianza
+    current_pose = msg.pose.pose 
 
-# Callback for receiving front laser scan data
-def laser_scan_callback(msg):
+def front_laser_scan_callback(msg):
     global front_laser_scan
     front_laser_scan = msg.ranges
 
-# Calculate the cost function J(x, u) for the MPC
+def rear_laser_scan_callback(msg):
+    global rear_laser_scan
+    rear_laser_scan = msg.ranges
+
 def calculate_cost(current_pose, goal_pose, obstacles_static):
-    # Distance from robot to goal
     distance_to_goal = np.linalg.norm(np.array([current_pose.position.x, current_pose.position.y]) -
                                       np.array([goal_pose.pose.position.x, goal_pose.pose.position.y]))
 
-    # Cost for goal (Φ_goal)
     phi_goal = distance_to_goal ** 2
 
-    # Cost for static obstacles (Φ_obs_static)
     phi_obs_static = 0
+    min_distance_to_obstacle = float('inf')
     for obs in obstacles_static:
         distance_to_static_obs = np.linalg.norm(np.array([current_pose.position.x, current_pose.position.y]) - obs)
-        if distance_to_static_obs < 1.5:  # Threshold for considering an obstacle close
+        min_distance_to_obstacle = min(min_distance_to_obstacle, distance_to_static_obs)
+        if distance_to_static_obs < 2:  
             phi_obs_static += 1 / (distance_to_static_obs ** 2)
 
-    # Total cost function J(x,u)
-    cost = omega_goal * phi_goal + omega_3 * phi_obs_static
+    # Calcolare omega_obstacle in base alla distanza minima all'ostacolo
+    global omega_obstacle
+    omega_obstacle = max(0.1, 1 / (min_distance_to_obstacle + 0.2))  # Aumenta omega_obstacle man mano che la distanza diminuisce
+
+    # J(x,u)
+    cost = omega_goal * phi_goal + omega_obstacle * phi_obs_static
     return cost
 
-
-# Function to get obstacle positions from laser scan data
-def get_obstacle_positions(laser_scan):
+def get_obstacle_positions(front_scan, rear_scan):
     obstacles = []
-    angle_increment = 0.5  # Example value, this can be extracted from the LaserScan message
-    current_angle = -len(laser_scan) * angle_increment / 2
-    for r in laser_scan:
-        if r < 10.0:  # Consider obstacles within 10 meters
-            x = r * np.cos(current_angle)
-            y = r * np.sin(current_angle)
+    num_readings_front = len(front_scan)
+    num_readings_rear = len(rear_scan)
+    
+    # Scan Anteriore (retro del robot nel nostro caso)
+    for i in range(num_readings_front):
+        r = front_scan[i]
+        if r < 1.5:  
+            angle = angle_min + i * angle_increment
+            x = r * np.cos(angle)
+            y = r * np.sin(angle)
             obstacles.append([x, y])
-        current_angle += angle_increment
+    
+    # Scan Posteriore (frontale del robot)
+    for i in range(num_readings_rear):
+        r = rear_scan[i]
+        if r < 1.5:  
+            angle = angle_min + i * angle_increment
+            x = r * np.cos(angle)
+            y = r * np.sin(angle)
+            obstacles.append([x, y])
+
     return obstacles
 
-# Main MPC optimization loop
 def mpc_control_loop(goal_pose):
-    rate = rospy.Rate(10)  # Control loop rate: 10 Hz
+    rate = rospy.Rate(20)
+    delta_t = 0.05  
+
     while not rospy.is_shutdown():
-        # Ensure sensor data is available
-        if current_pose is None or front_laser_scan is None:
+        if current_pose is None or front_laser_scan is None or rear_laser_scan is None:
             rospy.loginfo("Waiting for sensor data...")
             rate.sleep()
             continue
 
-        # Get static obstacle positions from sensor data
-        static_obstacles = get_obstacle_positions(front_laser_scan)
+        static_obstacles = get_obstacle_positions(front_laser_scan, rear_laser_scan)
 
-        # Calculate control input that minimizes the cost function
         best_cost = float('inf')
         best_twist = Twist()
 
-        # Simulate different control inputs (e.g., velocities) and evaluate the cost
-        for linear_vel in np.linspace(-1.3, -0.3, 7):  # Test different linear velocities
-            for angular_vel in np.linspace(-1.0, 1.0, 7):  # Test different angular velocities
-                simulated_twist = Twist()
-                simulated_twist.linear.x = linear_vel
-                simulated_twist.angular.z = angular_vel
-
-                # Simulate next state (ignoring dynamics for simplicity)
-                simulated_pose = deepcopy(current_pose)  # Assume current_pose gets updated with actual pose
+        for linear_vel in np.linspace(-1, 0.5, 5):  
+            for angular_vel in np.linspace(-0.7, 0.7, 10): 
                 
-                simulated_pose.position.x += simulated_twist.linear.x * np.cos(current_pose.orientation.z) * (.1)
-                simulated_pose.position.y += simulated_twist.linear.x * np.sin(current_pose.orientation.z) * (.1)
+                simulated_pose = deepcopy(current_pose)
 
-                # Calculate cost for this control input
+                current_orientation = simulated_pose.orientation
+                _, _, current_theta = euler_from_quaternion([
+                    current_orientation.x, 
+                    current_orientation.y, 
+                    current_orientation.z, 
+                    current_orientation.w
+                ])
+
+                simulated_pose.position.x += linear_vel * np.cos(current_theta) * delta_t
+                simulated_pose.position.y += linear_vel * np.sin(current_theta) * delta_t
+
+                new_theta = current_theta + angular_vel * delta_t
+                simulated_pose.orientation = quaternion_from_euler(0, 0, new_theta) 
+
                 cost = calculate_cost(simulated_pose, goal_pose, static_obstacles)
-               
+
                 if cost < best_cost:
                     best_cost = cost
-                    best_twist = simulated_twist
+                    best_twist.linear.x = linear_vel
+                    best_twist.angular.z = angular_vel * omega_obstacle  # Regola la velocità angolare in base a omega_obstacle
 
-        # Publish the best control command
         cmd_vel_pub.publish(best_twist)
 
+        distance_to_goal = np.linalg.norm(np.array([current_pose.position.x, current_pose.position.y]) -
+                                          np.array([goal_pose.pose.position.x, goal_pose.pose.position.y]))
+        rospy.loginfo(f"Distance to goal: {distance_to_goal:.2f}")
+        rospy.loginfo(f"Best command: Linear velocity: {best_twist.linear.x}, Angular velocity: {best_twist.angular.z}")
+        
         rate.sleep()
 
 if __name__ == "__main__":
     rospy.init_node('mpc_algorithm')
 
-    # Publishers for control commands
     cmd_vel_pub = rospy.Publisher('/robot/cmd_vel', Twist, queue_size=10)
 
-    # Subscribers for sensor data
     rospy.Subscriber('/robot/amcl_pose', PoseWithCovarianceStamped, amcl_pose_callback)
-    rospy.Subscriber('/robot/rear_laser/scan', LaserScan, laser_scan_callback)
+    rospy.Subscriber('/robot/front_laser/scan', LaserScan, front_laser_scan_callback)
+    rospy.Subscriber('/robot/rear_laser/scan', LaserScan, rear_laser_scan_callback)
 
-    # Define a goal position for the robot to navigate towards
     goal_pose = PoseStamped()
-    goal_pose.pose.position.x = -2.0  # Example goal position (5 meters ahead)
+    goal_pose.pose.position.x = -2.0  
     goal_pose.pose.position.y = 0.0
 
-    # Start the MPC control loop
     mpc_control_loop(goal_pose)

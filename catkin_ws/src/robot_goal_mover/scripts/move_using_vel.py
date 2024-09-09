@@ -25,7 +25,7 @@ class MoveAndStop:
 
         # Crea un messaggio Twist
         self.twist = Twist()
-        self.twist.linear.x = 0.5
+        self.twist.linear.x = -0.5
         self.twist.angular.z = 0.0
 
     def odom_callback(self, msg):
