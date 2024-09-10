@@ -46,7 +46,8 @@ def calculate_cost(current_pose, goal_pose, obstacles_static):
 
     # Calcolare omega_obstacle in base alla distanza minima all'ostacolo
     global omega_obstacle
-    omega_obstacle = max(0.1, 1 / (min_distance_to_obstacle + 0.1))  # Aumenta omega_obstacle man mano che la distanza diminuisce
+    omega_obstacle = max(0.3, 1 / (min_distance_to_obstacle + 0.05))  # Aumenta omega_obstacle man mano che la distanza diminuisce
+    rospy.loginfo(f"Omega Obstacle: {omega_obstacle}")
 
     # J(x,u)
     cost = omega_goal * phi_goal + omega_obstacle * phi_obs_static
@@ -72,7 +73,10 @@ def calculate_target_angle(current_pose, goal_pose):
         current_orientation.w
     ])
 
-    return target_angle - current_theta
+    angle_diff = current_theta - target_angle
+    angle_diff = np.arctan2(np.sin(angle_diff), np.cos(angle_diff))
+
+    return angle_diff
 
 def get_obstacle_positions(front_scan, rear_scan):
     obstacles = []
@@ -82,7 +86,7 @@ def get_obstacle_positions(front_scan, rear_scan):
     # Scan Anteriore (retro del robot nel nostro caso)
     for i in range(num_readings_front):
         r = front_scan[i]
-        if r < 1:  
+        if r < 1.5:  
             angle = angle_min + i * angle_increment
             x = r * np.cos(angle)
             y = r * np.sin(angle)
@@ -91,7 +95,7 @@ def get_obstacle_positions(front_scan, rear_scan):
     # Scan Posteriore (frontale del robot)
     for i in range(num_readings_rear):
         r = rear_scan[i]
-        if r < 1:  
+        if r < 1.5:  
             angle = angle_min + i * angle_increment
             x = r * np.cos(angle)
             y = r * np.sin(angle)
@@ -100,8 +104,8 @@ def get_obstacle_positions(front_scan, rear_scan):
     return obstacles
 
 def mpc_control_loop(goal_pose):
-    rate = rospy.Rate(20)
-    delta_t = 0.05  
+    rate = rospy.Rate(30)
+    delta_t = 0.033 
 
     while not rospy.is_shutdown():
         if current_pose is None or front_laser_scan is None or rear_laser_scan is None:
@@ -126,8 +130,8 @@ def mpc_control_loop(goal_pose):
         best_cost = float('inf')
         best_twist = Twist()
 
-        for linear_vel in np.linspace(-1, 0.5, 5):  
-            for angular_vel in np.linspace(-1, 1, 10): 
+        for linear_vel in np.linspace(-1, 0.5, 10):  
+            for angular_vel in np.linspace(-0.5, 0.5, 15): 
                 
                 simulated_pose = deepcopy(current_pose)
 
@@ -143,6 +147,10 @@ def mpc_control_loop(goal_pose):
                 simulated_pose.position.y += linear_vel * np.sin(current_theta) * delta_t
 
                 new_theta = current_theta + angular_vel * delta_t
+                if abs(new_theta - current_theta) > abs(angular_vel * delta_t):
+                    new_theta = current_theta + np.sign(angular_vel) * abs(angular_vel * delta_t)
+
+
                 simulated_pose.orientation = quaternion_from_euler(0, 0, new_theta) 
 
                 cost = calculate_cost(simulated_pose, goal_pose, static_obstacles)
@@ -153,9 +161,9 @@ def mpc_control_loop(goal_pose):
                     best_twist.angular.z = angular_vel * omega_obstacle
 
         # Verifica se ci sono ostacoli vicini e orienta il robot verso il target se non ce ne sono
-        if min_distance_to_obstacle > 1.2: 
+        if min_distance_to_obstacle > 1.5: 
             target_angle_diff = calculate_target_angle(current_pose, goal_pose)
-            best_twist.angular.z = np.clip(target_angle_diff, -1, 1)  
+            best_twist.angular.z = np.clip(target_angle_diff, -0.4, 0.4)  
 
         cmd_vel_pub.publish(best_twist)
 
