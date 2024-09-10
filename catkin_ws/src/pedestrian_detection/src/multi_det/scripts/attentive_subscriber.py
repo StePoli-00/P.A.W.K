@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import rospy
 from sensor_msgs.msg import Image
+from std_msgs.msg import Float32
 from cv_bridge import CvBridge
 import numpy as np
 import cv2
@@ -10,8 +11,9 @@ class PoseSubscriber:
     def __init__(self):
         rospy.init_node('attentive_subscriber', anonymous=True)
         self.subscriber = rospy.Subscriber('/robot/wrist_rgbd/rgb/image_raw', Image, self.callback)
-        self.bridge = CvBridge()
+        self.attention_publisher = rospy.Publisher('/attentive_subscriber', Float32, queue_size=10)  
         self.mp_holistic = mp.solutions.holistic
+        self.bridge = CvBridge()
         self.holistic = self.mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5)
         self.mp_drawing = mp.solutions.drawing_utils
         self.drawing_spec = self.mp_drawing.DrawingSpec(color=(128, 0, 128), thickness=1, circle_radius=1)
@@ -27,12 +29,16 @@ class PoseSubscriber:
 
             if body_facing_camera and face_facing_camera:
                 label = "Body and Face facing camera"
-            elif body_facing_camera:
-                label = "Body facing camera, Face not facing"
-            elif face_facing_camera:
-                label = "Face facing camera, Body not facing"
+                attention_level = 1.0
+            elif body_facing_camera or face_facing_camera:
+                label = "Body facing camera, Face not facing" if body_facing_camera else "Face facing camera, Body not facing"
+                attention_level = 0.5
             else:
                 label = "Body and Face not facing camera"
+                attention_level = 0.1
+
+            # Pubblica il livello di attenzione
+            self.attention_publisher.publish(Float32(attention_level))
 
             # Display the result on the image
             cv2.putText(image, label, (30, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 255), 2)
