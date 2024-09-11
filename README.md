@@ -1,5 +1,6 @@
 # Smart Robotics Project
-This Repository contains the code of Smart Robotics Project
+This Repository contains the code of Smart Robotics Project.
+This project aim to have an obstacle avoidance control analizing actors attention on Robotnik Kairos simulator, implemented using a MPC algorithm. 
 
 # Setup
 
@@ -31,19 +32,16 @@ cd catkin_ws
 catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3
 source devel/setup.bash
 ```
-## Run collision detection algorithm
+## Run simualtor and obstacle avoiding algorithm
 
-1. launch the simulation
+1. Just running the simulation, all the required node will be instantiated 
 ```sh
 roslaunch rbkairos_sim_bringup rbkairos_complete.launch
 ```
-2. run rosnode to detect static and dynamic obstacles
- ```sh
-rosrun obstacle_detection new_version.py
-```
-3. run control algorithm 
+## Useful Nodes
+1. Pedestrian Attention Detection - camera screen to visualize body and face landmarks and assinged YOLO label to an actor. 
 ```sh
-rosrun mpc_algorithm algorithm_<version>.py
+rosrun multi_det attention_subscriber.py
 ```
 
 
