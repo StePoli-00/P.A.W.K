@@ -183,5 +183,8 @@
 
     </include>
 
+    <node pkg="get_current_pose" type="get_pos.py" name="get_pos" output="screen"> </node>
+    <node pkg="multi_det" type="attentive_subscriber.py" name="attentive_subscriber" output="screen"> </node>
+    <node pkg="mpc_algorithm" type="algorithm_v3.py" name="algorithm_v3" output="screen"> </node>
 
 </launch>
