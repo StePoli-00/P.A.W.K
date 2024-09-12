@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="flag">
+    <!-- Posizione della bandiera nel mondo -->
+    <pose>0 0 0 0 0 0</pose>
+    
+    <!-- Palo della bandiera -->
+    <link name="pole">
+      <pose>0 0 1 0 0 0</pose> <!-- Posizionare il palo verticalmente -->
+      <collision name="pole_collision">
+        <geometry>
+          <cylinder>
+            <radius>0.05</radius> <!-- Spessore del palo -->
+            <length>2</length>    <!-- Altezza del palo -->
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="pole_visual">
+        <geometry>
+          <cylinder>
+            <radius>0.05</radius>
+            <length>2</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.5 0.5 0.5 1</ambient> <!-- Colore grigio per il palo -->
+          <diffuse>0.5 0.5 0.5 1</diffuse>
+        </material>
+      </visual>
+    </link>
+
+    <!-- Tessuto della bandiera -->
+    <link name="flag_cloth">
+      <pose>0.5 0 1.75 0 0 0</pose> <!-- Posizionare il tessuto all'estremità del palo -->
+      <collision name="cloth_collision">
+        <geometry>
+          <box>
+            <size>1 0.01 0.5</size> <!-- Dimensioni del tessuto della bandiera -->
+          </box>
+        </geometry>
+      </collision>
+      <visual name="cloth_visual">
+        <geometry>
+          <box>
+            <size>1 0.01 0.5</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri> <!-- Usa una texture o colore -->
+            <name>Gazebo/Red</name> <!-- Colore rosso per la bandiera -->
+          </script>
+        </material>
+      </visual>
+    </link>
+    
+  </model>
+</sdf>

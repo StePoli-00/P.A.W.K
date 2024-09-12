@@ -186,6 +186,6 @@ if __name__ == "__main__":
 
     goal_pose = PoseStamped()
     goal_pose.pose.position.x = -3.0  
-    goal_pose.pose.position.y = 0.0
+    goal_pose.pose.position.y = 1.0
 
     mpc_control_loop(goal_pose)
