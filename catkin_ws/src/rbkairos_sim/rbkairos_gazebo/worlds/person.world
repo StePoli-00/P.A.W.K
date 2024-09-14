@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="default">
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    
+    <actor name="actor">
+      <link name="link">
+        <inertial>
+          <pose>0 -0.1 0.95 0 0 0</pose>
+          <mass>80.0</mass>
+          <inertia>
+            <ixx>24.88</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>25.73</iyy>
+            <iyz>0</iyz>
+            <izz>2.48</izz>
+          </inertia>
+        </inertial>
+
+        <collision name="bottom">
+          <pose>0 -0.1 0.01 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.5 0.35 0.02</size>
+            </box>
+          </geometry>
+        </collision>
+
+        <collision name="person">
+          <pose>0 0 0.02 0.04 0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://business_man/meshes/business_man.dae</uri>
+            </mesh>
+          </geometry>
+        </collision>
+
+        <visual name="visual">
+          <pose>0 0 0.02 0.04 0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://business_man/meshes/business_man.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+      
+      <script>
+        <loop>true</loop>
+        <delay_start>0.000000</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+          <waypoint>
+            <time>0.0</time>
+            <pose>0 4 0 0 0 1.57</pose>
+          </waypoint>
+
+          <waypoint>
+            <time>10.0</time>
+            <pose>5 4 0 0 0 1.57</pose>
+          </waypoint>
+
+          <waypoint>
+            <time>15.0</time>
+            <pose>5 3 0 0 0 0</pose>
+          </waypoint>
+          
+          <waypoint>
+            <time>25.0</time>
+            <pose>5 -4 0 0 0 0</pose>
+          </waypoint>
+
+          <waypoint>
+            <time>30.0</time>
+            <pose>5 -4 0 0 0 -1.57</pose>
+          </waypoint>
+
+          <waypoint>
+            <time>40.0</time>
+            <pose>-5 -4 0 0 0 -1.57</pose>
+          </waypoint>
+
+          <waypoint>
+            <time>45.0</time>
+            <pose>-5 -4 0 0 0 3.14</pose>
+          </waypoint>
+
+          <waypoint>
+            <time>55.0</time>
+            <pose>-5 4 0 0 0 3.14</pose>
+          </waypoint>
+
+          <waypoint>
+            <time>60.0</time>
+            <pose>-5 4 0 0 0 1.57</pose>
+          </waypoint>
+
+          <waypoint>
+            <time>65</time>
+            <pose>0 4 0 0 0 1.57</pose>
+          </waypoint>
+
+        </trajectory>
+      </script>
+    </actor>
+  </world>
+</sdf>

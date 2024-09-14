@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <model name="BusinessMan">
+    <pose>1 1 1 0 0 -1.576463</pose> <!-- Posizione e orientamento iniziali del modello -->
+    <link name="link">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://business_man/meshes/business_man.dae</uri><!-- Percorso del tuo file .dae -->
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+          <uri>model://business_man/meshes/business_man.dae</uri><!-- Usa lo stesso file per la collisione -->
+          <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>
+
