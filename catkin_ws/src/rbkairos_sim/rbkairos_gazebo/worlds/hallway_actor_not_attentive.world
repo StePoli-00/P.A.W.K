@@ -1123,7 +1123,7 @@
         <static>0</static>
         <allow_auto_disable>1</allow_auto_disable>
         <pose>-3 1 0.987109 0 -0 0</pose>
-      
+
       </model>
     <actor name="actor">
       <plugin name="actor_collisions_plugin" filename="libActorCollisionsPlugin.so">
@@ -1279,18 +1279,22 @@
       <auto_start>true</auto_start>
       <trajectory id="0" type="walking">
       <interpolate_x>true</interpolate_x>
-      <waypoint>
-        <time>0</time>
-        <pose>-7 0 0 0 0 1.576463</pose>
-      </waypoint>
+        <waypoint>
+          <time>0</time>
+          <pose>-7 0 0 0 0 1.491966</pose>
+        </waypoint>
+        <waypoint>
+        	<time>20</time> <!-- Tempo in secondi per raggiungere il goal -->
+        	<pose>1.713092 0.077379 0 0 0 1.491966</pose> <!-- Pose del goal: x, y, z, roll, pitch, yaw -->
+      	</waypoint>
         <waypoint>
         	<time>40</time> <!-- Tempo in secondi per raggiungere il goal -->
-        	<pose>10 0 0 0 0 1.576463</pose> <!-- Pose del goal: x, y, z, roll, pitch, yaw -->
+        	<pose>1.713092 3.190575 0 0 0 -3.042674</pose> <!-- Pose del goal: x, y, z, roll, pitch, yaw -->
       	</waypoint>
       </trajectory>
       </script>
     </actor>
-  
+
 
     <state world_name='default'>
       <sim_time>0 0</sim_time>
@@ -1298,7 +1302,7 @@
       <wall_time>0 0</wall_time>
       <iterations>0</iterations>
     </state>
-    
+
     <gui fullscreen='0'>
       <camera name='user_camera'>
         <pose>44.8364 -7.90288 44.4437 0 0.903643 3.14019</pose>
