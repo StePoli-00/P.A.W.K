@@ -43,6 +43,13 @@ roslaunch rbkairos_sim_bringup rbkairos_complete.launch
 ```sh
 rosrun multi_det attention_subscriber.py
 ```
+## Load actor model
+> [!NOTE]
+> place `/Smart-Robotics-Project/catkin_ws/src/rbkairos_sim/rbkairos_gazebo/worlds/business_man` inside `<username>/home/.gazebo/models` CTRL+H to see hiding files
+
+
+
+
 
 
 
