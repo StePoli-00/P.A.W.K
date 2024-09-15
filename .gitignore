@@ -4,6 +4,7 @@ build/
 bin/
 venv/
 lib/
+.vscode
 .catkin_tools/*
 *.png
 *.pt
