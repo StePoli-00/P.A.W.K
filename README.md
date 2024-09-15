@@ -1,6 +1,5 @@
 # PAWK: Pedestrian Avoidance With Kairos
-This project aim to have an obstacle avoidance control analizing actors attention on Robotnik Kairos simulator, implemented using a MPC algorithm. 
-THe work was developed in collaboration with [Francesco Zampirollo](https://github.com/zampifre) and [Emma Scinti Roger](https://github.com/Emmascinti).
+This project developed in collaboration with [Francesco Zampirollo](https://github.com/zampifre) and [Emma Scinti Roger](https://github.com/Emmascinti) aims to have an obstacle avoidance control analizing actors attention on Robotnik Kairos simulator, implemented using a MPC algorithm. 
 # Setup
 
 ## Clone Project
