@@ -37,7 +37,7 @@ cd pedestrian_detection
 roslaunch rbkairos_sim_bringup rbkairos_complete.launch
 ```
 
-# Repository Overview
+# Project Overview
 most of our work is located in `catkin_ws/src`, inside you can find:
 
 ## Resources
