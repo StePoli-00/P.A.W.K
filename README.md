@@ -54,7 +54,7 @@ if you want to test different world in `catkin_ws/src/rbkairos_sim/rbkairos_gaze
 
 ```xml
     <arg name="launch_rviz" default="true"/>
-    <arg name="gazebo_world" default="$(find rbkairos_gazebo)/worlds/<filename></filename>.world"/>
+    <arg name="gazebo_world" default="$(find rbkairos_gazebo)/worlds/`filename`.world"/>
 ```
 
 
